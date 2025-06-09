@@ -1,12 +1,18 @@
-// index.js
-const express = require('express');
-const app = express();
+const http = require('http');
+
+const requestHandler = (req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello, World from Azure Node.js 20!');
+};
+
 const port = process.env.PORT || 3000;
+const server = http.createServer(requestHandler);
 
-app.get('/', (req, res) => {
-  res.send('Hello, World from Azure Update!');
-});
+if (require.main === module) {
+  server.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+  });
+}
 
-app.listen(port, () => {
-  console.log(`App running on port ${port}`);
-});
+module.exports = requestHandler;
