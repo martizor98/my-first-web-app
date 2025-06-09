@@ -7,7 +7,7 @@ test('responds with Hello World message', done => {
 
   // Mock end() method to test response
   res.end = (message) => {
-    expect(message).toBe('Hello, World from Azure Node.js 20!');
+    expect(message).toBe('Hello, World from Azure Node.js 20! Patch 1');
     done();
   };
 
